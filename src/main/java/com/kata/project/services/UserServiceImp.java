@@ -30,8 +30,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void patch(long id, User user) {
-        userDao.patch(id, user);
+    public void patch(User user) {
+        userDao.patch(user);
     }
 
     @Override
