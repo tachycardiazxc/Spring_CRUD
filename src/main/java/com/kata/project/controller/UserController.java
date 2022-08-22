@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -47,10 +47,7 @@ public class UserController {
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        User oldUser = userService.getById(id);
-        oldUser.setLastName(user.getLastName());
-        oldUser.setFirstName(user.getFirstName());
-        userService.patch(oldUser);
+        userService.patch(user);
         return "redirect:/users";
     }
 
